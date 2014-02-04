@@ -1,0 +1,35 @@
+//Cojocaru Mihail-Razvan 313CA
+
+	Programul realizeaza comportamentul de baza al unui motor de cautare, folosind un hashtable modificat.
+	Am pornit de la scheletul de cod publicat pentru aceasta tema, dar l-am modificat in sensul ca metodele clasei Algorithm le-am mutat in main.
+	Astfel, in locul unei clase mari, am folosit mai multe functii, cu acelasi nume si functionalitati ca metodele clasei.
+	Arhiva contine fisierul main (tema3.cpp), un header cu lista dublu inaltuita(list.h) si un header cu structura hashtable.
+
+	Avand in vedere ca functiile sunt asemanatoare cu metodele clasei din schelet, acest readme va pune accentul pe descrierea
+structurii de hashtable folosita si pe functiile suplimentare adaugate.
+
+	Structura Hashtable este implementata ca un vector de liste dublu inlantuite, numarul de elemente al vectorului fiind
+primit ca parametru in constructor. Functia de hash este cea din scheletul de cod publicat, si este implementata direct
+in clasa Hashtable, nu transmisa ca parametru.
+	Chelie din hashtable sunt stringuri din stl, iar valorile reprezinta liste de string-uri.
+	Cheile sunt, de fapt, cuvinte cheie ale site-urilor primite, iar listele contin site-urile asociate fiecarui cuvant.
+	Clasa contine 3 metode:
+	-put: Primeste ca parametru o cheie(cuvantul) si o valoare(site-ul). Functia adauga site-ul in lista cuvantului cheie,
+daca respectivul cuvant exista deja in hashtable, sau creeaza o lista de site-ui si adauga site-ul respectiv in aceasta lista,
+in caz contrar. Listele de cuvinte sunt sortate alfabetic, mentinute astfel prin metoda addElement din list.h.
+	-get: Returneaza lista de site-uri asociata unui cuvant-cheie.
+	-hasKey: Verifica daca cheia primita ca parametru exista in hashtable(1 daca exista, 0 in caz contrar).
+	
+	Pe langa cele 4 functii corespunzatoare metodelor din schelet, am folosit o functie care realizeaza intersectia a doua liste.
+	Functia intersect foloseste proprietatea de ordonare alfabetica a listelor.
+	Modul de functionare este urmatorul: 
+	- folosim 2 pointeri(p1, p2), pozitionati initial la inceputul fiecarei liste, precum si un pointer auxiliar;
+	- folosind metoda findfrom(din list.h), care cauta un element intr-o lista, pornind dintr-o pozitie data, cautam elementul din p1(asociat primei liste) in cea de-a doua lista, pornind de la pozitia p2;
+	- daca elementul a fost gasit, adaugam elementul in lista finala, hmutam pointerul p2 cu o pozitie;
+	- mutam pointerul p1 cu o pozitie si continuam algoritmul pana cand unul din pointeri ajunge la finalul listei;
+	- functia returneaza lista finala, formata prin intersectia celor 2 liste.
+	
+	Lista liniara dublu inlantuita din list.h mai contine, pe langa metodele obisnuite ale unei liste: 
+	o functie de afisare(printList)
+	o functie findfrom, care returneaza prima pozitie a unui element dintr-o lista sortate, pornind de la o pozitie data
+	o functie addElement, care insereaza un element intr-o lista sortata, pe pozitia corespunzatoare
